@@ -36,7 +36,7 @@ NexWall modifies `iptables` and captures packets, which requires root privileges
 Run it using:
 
 ```bash
-sudo python3 nexwall.py
+sudo python3 gui_firewall.py
 ```
 
 > Without `sudo`, packet sniffing and firewall modifications won’t function correctly.
