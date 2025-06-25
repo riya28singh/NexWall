@@ -1,34 +1,147 @@
-# NexWall
-# 🔥 NexWall – Python-Based Inbound Firewall for Linux
 
-**NexWall** is a user-friendly, Python-based personal firewall designed to block **incoming (inbound)** traffic via a graphical interface. Built using `tkinter`, `iptables`, and `Scapy`, it lets users apply IP, port, or protocol-based filtering — ideal for security learners and Linux users wanting GUI control over their system's firewall.
+# 🔥 NexWall – GUI-Based Personal Firewall for Linux
+
+**NexWall** is a user-friendly personal firewall with a graphical interface built using Python and Tkinter. It allows you to block incoming traffic by **IP address**, **port**, or **protocol**, and logs all firewall activity. Designed for **Linux systems** with `iptables`, it's ideal for personal and educational network security monitoring.
+This project was built during my internship at Elevate Labs as my final project. It was a great opportunity to apply what I’d learned and contribute to something real. I handled everything from design to implementation, aiming to build something useful and well-crafted.
+
 
 ---
 
 ## 📌 Project Highlights
 
-- 🧱 **Inbound traffic blocking only** – protect your system from external access
-- 👁️ **Live packet sniffing** using Scapy
-- 🖱️ **Tkinter GUI** for adding/removing firewall rules easily
-- 📜 **Event logs** for every blocked action (saved in `gui_firewall.log`)
-- 💾 **Persistent rule saving** using `gui_rules.json`
-- 🔐 Uses **iptables** to apply kernel-level filtering for high reliability
+- 🔐 **Block incoming traffic** by IP, port, or protocol via GUI
+- 🧱 **Uses iptables** for real firewall rule enforcement
+- 🧠 **Built-in logging** with timestamps of blocked actions
+- 💾 **Persistent rule management** via `gui_rules.json`
+- 📋 **Log viewer** to inspect blocked connections in real-time
+- ⚙️ **Start/stop firewall sniffing** directly from the interface
+- 🪟 **Modern and clean Tkinter GUI**
 
 ---
 
 ## ⚙️ Technologies Used
 
 - **Python 3**
-- **Tkinter** (GUI framework)
+- **Tkinter** (GUI)
 - **Scapy** (packet sniffing)
-- **iptables** (Linux packet filtering)
+- **iptables** (Linux firewall)
+- **Linux OS** (tested on Kali)
 
 ---
 
 ## ⚠️ Root Access Required
 
-To apply `iptables` rules and capture packets, this app must be run with **root privileges**.
+NexWall modifies `iptables` and captures packets, which requires root privileges.
+
+Run it using:
+
+```bash
+sudo python3 nexwall.py
+```
+
+> Without `sudo`, packet sniffing and firewall modifications won’t function correctly.
+
+---
+
+## 📁 Auto-Generated Files
+
+The following files are automatically created when you run NexWall:
+
+| File Name          | Description                                              |
+|--------------------|----------------------------------------------------------|
+| `gui_rules.json`   | Stores all blocked rules (IP, Port, Protocol)            |
+| `gui_firewall.log` | Log file with time-stamped entries of blocked packets    |
+
+---
+
+## 📦 Required Python Libraries
+
+```
+scapy
+```
+
+> Other modules used like `tkinter`, `threading`, `json`, etc., come with Python 3.
+
+---
+
+## 📄 requirements.txt
+
+Below is the content for your `requirements.txt` file:
+
+```
+scapy
+```
+
+Install the requirements with:
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## ▶️ How to Use
+
+### 1. Clone the Repository
+
+```bash
+git clone git@github.com:riya28singh/NexWall.git
+cd NexWall
+```
+
+### 2. Install Python Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 3. Run the Application (with sudo)
 
 ```bash
 sudo python3 gui_firewall.py
+```
 
+---
+
+## 🖥 GUI Options Overview
+
+The GUI provides intuitive buttons to:
+
+- **Block IP** – Drop incoming traffic from a specific IP
+- **Block Protocol** – Drop packets by protocol number (e.g., `1` for ICMP)
+- **Block Port** – Block a specific port for TCP or UDP
+- **Remove Rule** – Remove a selected rule and update iptables
+- **Start Firewall** – Begin real-time packet sniffing with Scapy
+- **Stop Firewall** – Stop sniffing
+- **View Logs** – Open a scrollable window showing the block log
+- **Exit** – Close the application
+
+---
+
+## 💡 Example Use Case
+
+1. Launch NexWall as root:
+   ```bash
+   sudo python3 gui_firewall.py
+   ```
+
+2. In the GUI:
+   - Enter `192.168.1.10` and click **Block IP**.
+   - Select `tcp` and port `80`, then click **Block Port**.
+   - Start the firewall to begin sniffing traffic.
+   - View logs to inspect what was blocked and when.
+
+---
+
+## 👩‍💻 Author
+
+**Riya Singh**  
+Intership Project – Python GUI Network Security Tool
+
+---
+
+## ⚠️ Disclaimer
+
+This tool is for **educational and ethical use only**. Do not run it on networks you do not own or have explicit permission to monitor or modify.
+
+---
